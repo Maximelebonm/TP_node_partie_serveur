@@ -8,8 +8,9 @@ const corsOptions = {
     origin : ["http://localhost:3000"]
 };
 app.use(cors(corsOptions));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(router);
 
@@ -21,6 +22,7 @@ router.route("/").get((req, res) => {
 router.route("/form").post((req, res) => {
   let email = req.body.email;
   let password = req.body.password;
+  console.log("recup");
     res.send((req.method + req.path + email + password));
 });
 
